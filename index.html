@@ -1,0 +1,50 @@
+<html>
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Snake Game</title>
+
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
+
+       <link href="main.css" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+      <header></header>
+
+        <div class="cvs" >
+            <canvas id="snake" width="608" height="608" ></canvas>
+        </div>
+        
+        <div class="top10" id="top10">
+          <button onclick="signout()">Sign OUT</button>
+          <span id="test">name:</span>
+            <table style="width:100%">
+              <tr>
+                <th>Player</th> 
+                <th>Score</th>
+              </tr>
+              <tbody id = "score"></tbody>
+              
+            </table>
+    </div>
+    </body>
+    
+    <script src="snake.js"></script>
+    <script src="app.js"></script>
+    <script type="text/javascript">
+
+    checkcurrentuser();
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (!user) {
+          window.location.href = "welcome.html";
+        } else{
+          document.getElementById('top10').style.display= 'block' ;
+        }
+      });
+
+    </script>
+    
+</html>
